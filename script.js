@@ -172,6 +172,81 @@ const PREVENTION_TIPS = [
   "Instal dan gunakan antivirus terpercaya yang selalu diperbarui.",
 ];
 
+const AWARENESS_ITEMS = [
+  {
+    icon: "brain",
+    title: "Berpikir Sebelum Posting",
+    color: "var(--neon-green)",
+    tag: "THINK FIRST",
+    desc: "Konten yang kamu unggah bisa bertahan selamanya di internet. Tanyakan pada diri sendiri: apakah ini bisa merugikanmu 5 tahun ke depan?",
+    tips: [
+      "Hindari oversharing lokasi real-time",
+      "Periksa ulang sebelum klik share",
+      "Jejak digital bersifat permanen",
+    ],
+  },
+  {
+    icon: "shield-alert",
+    title: "Jaga Privasi Digitalmu",
+    color: "var(--neon-cyan)",
+    tag: "PRIVACY",
+    desc: "Data pribadimu adalah aset berharga. Pelaku kejahatan digital mencari celah dari informasi yang kamu bagikan secara tidak sadar.",
+    tips: [
+      "Batasi izin aplikasi (lokasi, kamera, mikrofon)",
+      "Gunakan email berbeda untuk akun penting",
+      "Baca kebijakan privasi sebelum daftar",
+    ],
+  },
+  {
+    icon: "share-2",
+    title: "Tanggung Jawab Berbagi Info",
+    color: "var(--neon-purple)",
+    tag: "RESPONSIBILITY",
+    desc: "Hoaks dan misinformasi menyebar 6x lebih cepat dari fakta. Kamu punya tanggung jawab untuk tidak menjadi bagian dari rantai penyebaran.",
+    tips: [
+      "Verifikasi dari minimal 2 sumber terpercaya",
+      "Jangan forward sebelum cek fakta",
+      "Laporkan konten hoaks yang kamu temukan",
+    ],
+  },
+  {
+    icon: "eye-off",
+    title: "Kenali Manipulasi Digital",
+    color: "var(--alert-red)",
+    tag: "AWARENESS",
+    desc: "Dark pattern, clickbait, dan rekayasa sosial dirancang untuk mengeksploitasi psikologimu. Kenali taktiknya agar tidak mudah dimanipulasi.",
+    tips: [
+      "Waspadai urgensi palsu ('Limited time!')",
+      "Kenali tombol misleading di aplikasi",
+      "Iklan yang terlalu personal = data kamu dijual",
+    ],
+  },
+  {
+    icon: "wifi",
+    title: "Aman di Ruang Publik",
+    color: "var(--neon-green)",
+    tag: "PUBLIC SAFETY",
+    desc: "Wi-Fi publik adalah surga bagi hacker. Satu koneksi ceroboh bisa membuka akses ke seluruh akun dan data sensitifmu.",
+    tips: [
+      "Hindari transaksi finansial di Wi-Fi publik",
+      "Gunakan VPN saat di luar rumah",
+      "Matikan auto-connect Wi-Fi di HP",
+    ],
+  },
+  {
+    icon: "heart-handshake",
+    title: "Etika Digital Generasi Z",
+    color: "var(--neon-cyan)",
+    tag: "DIGITAL ETHICS",
+    desc: "Dunia digital adalah ruang publik. Perlakukan orang lain secara online seperti kamu ingin diperlakukan di dunia nyata.",
+    tips: [
+      "Stop cyberbullying — report & block",
+      "Hormati hak cipta konten kreator",
+      "Gunakan teknologi untuk dampak positif",
+    ],
+  },
+];
+
 const TERMINAL_LINES = [
   "$ initializing security protocols...",
   "$ loading threat intelligence...",
@@ -546,6 +621,48 @@ function reloadIcons() {
       <span class="prevention-text">${t}</span>`;
     grid.appendChild(card);
   });
+  reloadIcons();
+})();
+
+/* ═══════════════════════════════════════════════
+   DIGITAL AWARENESS GRID
+═══════════════════════════════════════════════ */
+(function buildAwareness() {
+  const grid = document.getElementById("awareness-grid");
+  if (!grid) return;
+
+  AWARENESS_ITEMS.forEach((item, i) => {
+    const card = document.createElement("div");
+    card.className = "glass awareness-card animate-on-scroll";
+    card.style.transitionDelay = `${i * 0.08}s`;
+
+    const tipsHTML = item.tips
+      .map(
+        (tip) => `
+        <li class="awareness-tip">
+          <span class="awareness-tip-dot" style="background:${item.color};box-shadow:0 0 8px ${item.color};"></span>
+          <span>${tip}</span>
+        </li>`,
+      )
+      .join("");
+
+    card.innerHTML = `
+      <div class="awareness-top">
+        <div class="awareness-icon" style="border-color:${item.color};box-shadow:0 0 20px ${item.color}44;color:${item.color};">
+          ${icon(item.icon, item.color, 24)}
+        </div>
+        <span class="awareness-tag" style="color:${item.color};border-color:${item.color}44;background:${item.color}11;">
+          ${item.tag}
+        </span>
+      </div>
+      <h3 class="awareness-title" style="color:${item.color};">${item.title}</h3>
+      <p class="awareness-desc">${item.desc}</p>
+      <ul class="awareness-tips">${tipsHTML}</ul>
+    `;
+
+    grid.appendChild(card);
+  });
+
   reloadIcons();
 })();
 

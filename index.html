@@ -1,490 +1,360 @@
 <!doctype html>
 <html lang="id" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CyberShield</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- ─── Background ─── -->
-    <div id="bg-fixed">
-      <div class="bg-grid grid-bg"></div>
-      <div class="blob1"></div>
-      <div class="blob2"></div>
-      <div class="blob3"></div>
-      <div id="particles"></div>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberShield</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
-    <!-- ─── Terminal Intro ─── -->
-    <div id="terminal-intro">
-      <div style="width: 100%; max-width: 48rem">
-        <div class="t-header">
-          <span class="dot dot-red"></span>
-          <span class="dot dot-yellow"></span>
-          <span class="dot dot-green"></span>
-          <span class="t-label">root@cybershield:~#</span>
-        </div>
-        <div id="terminal-lines"></div>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- ─── Background ─── -->
+  <div id="bg-fixed">
+    <div class="bg-grid grid-bg"></div>
+    <div class="blob1"></div>
+    <div class="blob2"></div>
+    <div class="blob3"></div>
+    <div id="particles"></div>
+  </div>
+
+  <!-- ─── Terminal Intro ─── -->
+  <div id="terminal-intro">
+    <div style="width: 100%; max-width: 48rem">
+      <div class="t-header">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+        <span class="t-label">root@cybershield:~#</span>
       </div>
+      <div id="terminal-lines"></div>
     </div>
+  </div>
 
-    <!-- ─── Navbar ─── -->
-    <header>
-      <div class="nav-wrap">
-        <nav class="glass">
-          <button class="nav-logo" onclick="scrolltosection('home')">
-            <i
-              data-lucide="shield-check"
-              class="neon-text-green"
-              style="width: 24px; height: 24px"
-            ></i>
-            <span class="neon-text-green">CYBER</span
-            ><span class="neon-text-cyan">SHIELD</span>
-          </button>
-          <ul class="nav-desktop" id="nav-desktop"></ul>
-          <button
-            class="nav-hamburger"
-            id="nav-toggle"
-            aria-label="Toggle menu"
-          >
-            <i
-              data-lucide="menu"
-              id="nav-icon"
-              style="width: 24px; height: 24px"
-            ></i>
-          </button>
-        </nav>
-        <ul class="nav-mobile glass hidden" id="nav-mobile"></ul>
-      </div>
-    </header>
+  <!-- ─── Navbar ─── -->
+  <header>
+    <div class="nav-wrap">
+      <nav class="glass">
+        <button class="nav-logo" onclick="scrolltosection('home')">
+          <i data-lucide="shield-check" class="neon-text-green" style="width: 24px; height: 24px"></i>
+          <span class="neon-text-green">CYBER</span><span class="neon-text-cyan">SHIELD</span>
+        </button>
+        <ul class="nav-desktop" id="nav-desktop"></ul>
+        <button class="nav-hamburger" id="nav-toggle" aria-label="Toggle menu">
+          <i data-lucide="menu" id="nav-icon" style="width: 24px; height: 24px"></i>
+        </button>
+      </nav>
+      <ul class="nav-mobile glass hidden" id="nav-mobile"></ul>
+    </div>
+  </header>
 
-    <!-- ─── Main Content ─── -->
-    <main>
-      <!-- Hero -->
-      <section id="home">
-        <div class="container">
-          <div class="hero-grid">
-            <div style="animation: fadeInUp 0.8s ease forwards">
-              <div class="hero-badge glass">
-                <span class="dot-pulse"></span>
-                <span
-                  class="neon-text-green"
-                  style="
+  <!-- ─── Main Content ─── -->
+  <main>
+    <!-- Hero -->
+    <section id="home">
+      <div class="container">
+        <div class="hero-grid">
+          <div style="animation: fadeInUp 0.8s ease forwards">
+            <div class="hero-badge glass">
+              <span class="dot-pulse"></span>
+              <span class="neon-text-green" style="
                     font-family: var(--font-mono);
                     letter-spacing: 0.2em;
                     font-size: 0.75rem;
-                  "
-                ></span>
-              </div>
-              <h1 class="hero-h1">
-                Protect Your <span class="neon-text-green">Digital</span>
-                <span class="neon-text-cyan">World</span>
-              </h1>
-              <p class="hero-p">
-                Learn how cyber attacks happen, how to respond, and how to
-                secure your data — through interactive visualizations built for
-                the next generation of defenders.
-              </p>
-              <div class="hero-btns">
-                <button
-                  class="btn-primary"
-                  id="explore-threats-btn"
-                  onclick="scrolltosection('informasi')"
-                >
-                  <i
-                    data-lucide="shield-alert"
-                    style="width: 20px; height: 20px"
-                  ></i>
-                  Explore Threats
-                </button>
-                <button
-                  class="btn-secondary"
-                  id="check-password-btn"
-                  onclick="scrolltosection('tools')"
-                >
-                  <i
-                    data-lucide="key-round"
-                    style="width: 20px; height: 20px"
-                  ></i>
-                  Check Your Password
-                </button>
-              </div>
-              <div class="hero-stats">
-                <div>
-                  <div class="hero-stat-v">6</div>
-                  <div class="hero-stat-l">Attack Types</div>
-                </div>
-                <div>
-                  <div class="hero-stat-v">7</div>
-                  <div class="hero-stat-l">Response Steps</div>
-                </div>
-                <div>
-                  <div class="hero-stat-v">100%</div>
-                  <div class="hero-stat-l">Open Source</div>
-                </div>
-              </div>
+                  "></span>
             </div>
-
-            <div style="animation: fadeInScale 1s 0.2s ease both">
-              <div class="monitor-wrap">
-                <div class="float-3d">
-                  <div class="monitor scanlines">
-                    <div class="monitor-bar">
-                      <span
-                        class="monitor-dot"
-                        style="background: var(--alert-red)"
-                      ></span>
-                      <span
-                        class="monitor-dot"
-                        style="background: #eab308"
-                      ></span>
-                      <span
-                        class="monitor-dot"
-                        style="background: var(--neon-green)"
-                      ></span>
-                      <span class="monitor-label">cybershield</span>
-                    </div>
-                    <div class="scan-line"></div>
-                    <div class="monitor-content">
-                      <i
-                        data-lucide="alert-triangle"
-                        class="neon-text-red pulse-red alert-icon"
-                      ></i>
-                      <div class="breached neon-text-red glitch">
-                        SYSTEM BREACHED
-                      </div>
-                      <div class="mono-info neon-text-green">
-                        &gt; intruder_id: 0xFA3B-7711<br />
-                        &gt; vector: phishing<br />
-                        &gt; status:
-                        <span class="neon-text-red">CONTAINED</span>
-                      </div>
-                    </div>
-                    <div class="monitor-overlay"></div>
-                  </div>
-                  <div class="monitor-stand1"></div>
-                  <div class="monitor-stand2"></div>
-                  <div class="chip chip-left glass glass-cyan">
-                    <span class="neon-text-cyan">PORT 22</span> open
-                  </div>
-                  <div class="chip chip-right glass glass-purple">
-                    <span class="neon-text-purple">FW</span> blocked 1.2k
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Threats -->
-      <section id="informasi">
-        <div class="container">
-          <div class="section-header animate-on-scroll">
-            <div class="section-eyebrow glass neon-text-cyan">THREAT INTEL</div>
-            <h2 class="section-title">
-              Informasi <span class="neon-text-green">Ancaman Cyber</span>
-            </h2>
-            <p class="section-subtitle">
-              Kenali pola serangan paling umum yang mengincar data dan identitas
-              digitalmu.
+            <h1 class="hero-h1">
+              Protect Your <span class="neon-text-green">Digital</span>
+              <span class="neon-text-cyan">World</span>
+            </h1>
+            <p class="hero-p">
+              Learn how cyber attacks happen, how to respond, and how to
+              secure your data — through interactive visualizations built for
+              the next generation of defenders.
             </p>
-          </div>
-          <div class="threats-grid" id="threats-grid"></div>
-        </div>
-      </section>
-
-      <!-- Visualizer -->
-      <section id="visualisasi">
-        <div class="container">
-          <div class="section-header animate-on-scroll">
-            <div class="section-eyebrow glass neon-text-cyan">
-              LIVE SIMULATION
-            </div>
-            <h2 class="section-title">
-              Visualisasi <span class="neon-text-cyan">Teknik Serangan</span>
-            </h2>
-            <p class="section-subtitle">
-              Pilih sebuah vektor serangan untuk melihat alurnya secara visual.
-            </p>
-          </div>
-          <div class="attack-layout">
-            <div class="attack-buttons" id="attack-buttons"></div>
-            <div class="glass attack-stage">
-              <div class="attack-stage-header">
-                <div class="attack-stage-title" id="stage-title"></div>
-                <div class="attack-stage-sub" id="stage-sub"></div>
-              </div>
-              <div id="stage-visual"></div>
-              <ol class="attack-flow" id="stage-flow"></ol>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Response -->
-      <section id="penanganan">
-        <div class="container">
-          <div class="section-header animate-on-scroll">
-            <div class="section-eyebrow glass neon-text-cyan">
-              INCIDENT RESPONSE
-            </div>
-            <h2 class="section-title">
-              Penanganan <span class="neon-text-green">Serangan</span>
-            </h2>
-            <p class="section-subtitle">
-              7 langkah saat sistemmu sudah terkompromi.
-            </p>
-          </div>
-          <div class="timeline">
-            <div class="timeline-items" id="timeline-items"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Prevention -->
-      <section id="pencegahan">
-        <div class="container">
-          <div class="section-header animate-on-scroll">
-            <div class="section-eyebrow glass neon-text-cyan">HARDENING</div>
-            <h2 class="section-title">
-              Pencegahan <span class="neon-text-cyan">Serangan</span>
-            </h2>
-            <p class="section-subtitle">
-              Checklist sederhana untuk meningkatkan postur keamananmu.
-            </p>
-          </div>
-          <div class="prevention-grid" id="prevention-grid"></div>
-        </div>
-      </section>
-
-      <!-- Tools -->
-      <section id="tools">
-        <div class="container">
-          <div class="section-header animate-on-scroll">
-            <div class="section-eyebrow glass neon-text-cyan">CYBER TOOLS</div>
-            <h2 class="section-title">
-              Password <span class="neon-text-purple">Toolkit</span>
-            </h2>
-            <p class="section-subtitle">
-              Cek kekuatan passwordmu dan generate password baru, semuanya di
-              browser.
-            </p>
-          </div>
-          <div class="tools-grid">
-            <!-- Password Checker -->
-            <div class="glass tool-card">
-              <div class="tool-header">
-                <h3 class="tool-title neon-text-green">Password Strength</h3>
-                <span class="tool-badge"></span>
-              </div>
-              <p class="tool-desc">
-                Masukkan kata sandi Anda untuk dianalisis secara lokal di
-                browser. Kata sandi tersebut tidak akan dikirim ke server, tidak
-                disimpan, dan hanya digunakan untuk menampilkan tingkat kekuatan
-                password secara langsung di perangkat Anda. .
-              </p>
-              <div class="pw-input-wrap">
-                <input
-                  id="pw-input"
-                  class="pw-input"
-                  type="password"
-                  placeholder="Enter password..."
-                />
-                <button
-                  class="pw-eye"
-                  id="pw-toggle"
-                  aria-label="Toggle visibility"
-                >
-                  <i data-lucide="eye" style="width: 20px; height: 20px"></i>
-                </button>
-              </div>
-              <div class="strength-row">
-                <span class="strength-label">Strength</span>
-                <span class="strength-score" id="strength-label">—</span>
-              </div>
-              <div class="strength-bar-wrap">
-                <div
-                  class="strength-bar"
-                  id="strength-bar"
-                  style="width: 0%"
-                ></div>
-              </div>
-              <ul class="checks-list" id="checks-list"></ul>
-            </div>
-
-            <!-- Password Generator -->
-            <div class="glass glass-cyan tool-card">
-              <div class="tool-header">
-                <h3 class="tool-title neon-text-cyan">Password Generator</h3>
-                <span class="tool-badge"></span>
-              </div>
-              <p class="tool-desc">
-                Kata sandi acak dengan tingkat keamanan kriptografis tinggi,
-                dibuat langsung di browser Anda tanpa dikirim ke server.
-              </p>
-              <div class="gen-box">
-                <span class="gen-value" id="gen-value"></span>
-                <button class="gen-btn" id="gen-regen" aria-label="Regenerate">
-                  <i
-                    data-lucide="refresh-cw"
-                    style="width: 20px; height: 20px"
-                  ></i>
-                </button>
-                <button class="gen-btn" id="gen-copy" aria-label="Copy">
-                  <i
-                    data-lucide="copy"
-                    style="width: 20px; height: 20px"
-                    id="copy-icon"
-                  ></i>
-                </button>
-              </div>
-              <div class="len-row" style="margin-top: 1.25rem">
-                <label class="len-label" for="gen-len">Length</label>
-                <span class="len-val" id="len-display">16</span>
-              </div>
-              <input type="range" id="gen-len" min="8" max="48" value="16" />
-              <div class="gen-toggles">
-                <button class="toggle-btn active" id="tog-upper">
-                  Uppercase
-                </button>
-                <button class="toggle-btn active" id="tog-num">Numbers</button>
-                <button class="toggle-btn active" id="tog-sym">Symbols</button>
-              </div>
-              <button class="btn-generate" id="gen-btn">
-                Generate New Password
+            <div class="hero-btns">
+              <button class="btn-primary" id="explore-threats-btn" onclick="scrolltosection('informasi')">
+                <i data-lucide="shield-alert" style="width: 20px; height: 20px"></i>
+                Explore Threats
+              </button>
+              <button class="btn-secondary" id="check-password-btn" onclick="scrolltosection('tools')">
+                <i data-lucide="key-round" style="width: 20px; height: 20px"></i>
+                Check Your Password
               </button>
             </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- ─── Footer ─── -->
-    <footer id="contact">
-      <div class="container">
-        <!-- Quote Card -->
-        <div class="glass quote-card">
-          <p class="quote-text">
-            <span class="neon-text-green">"</span>
-            Cybersecurity is not a product, but a process.
-            <span class="neon-text-green">"</span>
-          </p>
-          <p class="quote-author">— Bruce Schneier</p>
-        </div>
-
-        <!-- Footer Bottom -->
-        <div class="footer-bottom">
-          <!-- Logo Brand -->
-          <div class="footer-brand">
-            <i
-              data-lucide="shield-check"
-              class="neon-text-green"
-              style="width: 24px; height: 24px"
-            ></i>
-            <span class="neon-text-green">CYBER</span>
-            <span class="neon-text-cyan">SHIELD</span>
+            <div class="hero-stats">
+              <div>
+                <div class="hero-stat-v">6</div>
+                <div class="hero-stat-l">Attack Types</div>
+              </div>
+              <div>
+                <div class="hero-stat-v">7</div>
+                <div class="hero-stat-l">Response Steps</div>
+              </div>
+              <div>
+                <div class="hero-stat-v">100%</div>
+                <div class="hero-stat-l">Open Source</div>
+              </div>
+            </div>
           </div>
 
-          <!-- Social Media Icons -->
-          <div class="footer-socials">
-            <a href="#" class="social-btn glass" aria-label="X (Twitter)">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="neon-text-cyan"
-              >
-                <path d="M18 6L6 18"></path>
-                <path d="M6 6l12 12"></path>
-              </svg>
-            </a>
-
-            <a href="#" class="social-btn glass" aria-label="GitHub">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="neon-text-cyan"
-              >
-                <path
-                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77A5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-                ></path>
-              </svg>
-            </a>
-
-            <a href="#" class="social-btn glass" aria-label="LinkedIn">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="neon-text-cyan"
-              >
-                <path
-                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"
-                ></path>
-                <rect x="2" y="9" width="4" height="12"></rect>
-                <circle cx="4" cy="4" r="2"></circle>
-              </svg>
-            </a>
-
-            <a
-              href="mailto:you@example.com"
-              class="social-btn glass"
-              aria-label="Email"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="neon-text-cyan"
-              >
-                <path d="M4 4h16v16H4z"></path>
-                <path d="m22 6-10 7L2 6"></path>
-              </svg>
-            </a>
+          <div style="animation: fadeInScale 1s 0.2s ease both">
+            <div class="monitor-wrap">
+              <div class="float-3d">
+                <div class="monitor scanlines">
+                  <div class="monitor-bar">
+                    <span class="monitor-dot" style="background: var(--alert-red)"></span>
+                    <span class="monitor-dot" style="background: #eab308"></span>
+                    <span class="monitor-dot" style="background: var(--neon-green)"></span>
+                    <span class="monitor-label">cybershield</span>
+                  </div>
+                  <div class="scan-line"></div>
+                  <div class="monitor-content">
+                    <i data-lucide="alert-triangle" class="neon-text-red pulse-red alert-icon"></i>
+                    <div class="breached neon-text-red glitch">
+                      SYSTEM BREACHED
+                    </div>
+                    <div class="mono-info neon-text-green">
+                      &gt; intruder_id: 0xFA3B-7711<br />
+                      &gt; vector: phishing<br />
+                      &gt; status:
+                      <span class="neon-text-red">CONTAINED</span>
+                    </div>
+                  </div>
+                  <div class="monitor-overlay"></div>
+                </div>
+                <div class="monitor-stand1"></div>
+                <div class="monitor-stand2"></div>
+                <div class="chip chip-left glass glass-cyan">
+                  <span class="neon-text-cyan">PORT 22</span> open
+                </div>
+                <div class="chip chip-right glass glass-purple">
+                  <span class="neon-text-purple">FW</span> blocked 1.2k
+                </div>
+              </div>
+            </div>
           </div>
-
-          <!-- Copyright -->
-          <p class="footer-copy">
-            © <span id="year"></span> CyberShield. Built for awareness.
-          </p>
         </div>
       </div>
-    </footer>
+    </section>
 
-    <script src="script.js"></script>
-  </body>
+    <!-- Threats -->
+    <section id="informasi">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <div class="section-eyebrow glass neon-text-cyan">THREAT INTEL</div>
+          <h2 class="section-title">
+            Informasi <span class="neon-text-green">Ancaman Cyber</span>
+          </h2>
+          <p class="section-subtitle">
+            Kenali pola serangan paling umum yang mengincar data dan identitas
+            digitalmu.
+          </p>
+        </div>
+        <div class="threats-grid" id="threats-grid"></div>
+      </div>
+    </section>
+
+    <!-- Visualizer -->
+    <section id="visualisasi">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <div class="section-eyebrow glass neon-text-cyan">
+            LIVE SIMULATION
+          </div>
+          <h2 class="section-title">
+            Visualisasi <span class="neon-text-cyan">Teknik Serangan</span>
+          </h2>
+          <p class="section-subtitle">
+            Pilih sebuah vektor serangan untuk melihat alurnya secara visual.
+          </p>
+        </div>
+        <div class="attack-layout">
+          <div class="attack-buttons" id="attack-buttons"></div>
+          <div class="glass attack-stage">
+            <div class="attack-stage-header">
+              <div class="attack-stage-title" id="stage-title"></div>
+              <div class="attack-stage-sub" id="stage-sub"></div>
+            </div>
+            <div id="stage-visual"></div>
+            <ol class="attack-flow" id="stage-flow"></ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Response -->
+    <section id="penanganan">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <div class="section-eyebrow glass neon-text-cyan">
+            INCIDENT RESPONSE
+          </div>
+          <h2 class="section-title">
+            Penanganan <span class="neon-text-green">Serangan</span>
+          </h2>
+          <p class="section-subtitle">
+            7 langkah saat sistemmu sudah terkompromi.
+          </p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-items" id="timeline-items"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prevention -->
+    <section id="pencegahan">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <div class="section-eyebrow glass neon-text-cyan">HARDENING</div>
+          <h2 class="section-title">
+            Pencegahan <span class="neon-text-cyan">Serangan</span>
+          </h2>
+          <p class="section-subtitle">
+            Checklist sederhana untuk meningkatkan postur keamananmu.
+          </p>
+        </div>
+        <div class="prevention-grid" id="prevention-grid"></div>
+      </div>
+    </section>
+
+    <!-- Digital Awareness -->
+    <section id="awareness">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <div class="section-eyebrow glass neon-text-cyan">
+            DIGITAL AWARENESS
+          </div>
+          <h2 class="section-title">
+            Bijak <span class="neon-text-green">Berinternet</span>
+          </h2>
+          <p class="section-subtitle">
+            Jadilah generasi digital yang cerdas, bertanggung jawab, dan aman
+            di dunia maya.
+          </p>
+        </div>
+        <div class="awareness-grid" id="awareness-grid"></div>
+      </div>
+    </section>
+
+    <!-- Tools -->
+    <section id="tools">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <div class="section-eyebrow glass neon-text-cyan">CYBER TOOLS</div>
+          <h2 class="section-title">
+            Password <span class="neon-text-purple">Toolkit</span>
+          </h2>
+          <p class="section-subtitle">
+            Cek kekuatan passwordmu dan generate password baru, semuanya di
+            browser.
+          </p>
+        </div>
+        <div class="tools-grid">
+          <!-- Password Checker -->
+          <div class="glass tool-card">
+            <div class="tool-header">
+              <h3 class="tool-title neon-text-green">Password Strength</h3>
+              <span class="tool-badge"></span>
+            </div>
+            <p class="tool-desc">
+              Masukkan kata sandi Anda untuk dianalisis secara lokal di
+              browser. Kata sandi tersebut tidak akan dikirim ke server, tidak
+              disimpan, dan hanya digunakan untuk menampilkan tingkat kekuatan
+              password secara langsung di perangkat Anda. .
+            </p>
+            <div class="pw-input-wrap">
+              <input id="pw-input" class="pw-input" type="password" placeholder="Enter password..." />
+              <button class="pw-eye" id="pw-toggle" aria-label="Toggle visibility">
+                <i data-lucide="eye" style="width: 20px; height: 20px"></i>
+              </button>
+            </div>
+            <div class="strength-row">
+              <span class="strength-label">Strength</span>
+              <span class="strength-score" id="strength-label">—</span>
+            </div>
+            <div class="strength-bar-wrap">
+              <div class="strength-bar" id="strength-bar" style="width: 0%"></div>
+            </div>
+            <ul class="checks-list" id="checks-list"></ul>
+          </div>
+
+          <!-- Password Generator -->
+          <div class="glass glass-cyan tool-card">
+            <div class="tool-header">
+              <h3 class="tool-title neon-text-cyan">Password Generator</h3>
+              <span class="tool-badge"></span>
+            </div>
+            <p class="tool-desc">
+              Kata sandi acak dengan tingkat keamanan kriptografis tinggi,
+              dibuat langsung di browser Anda tanpa dikirim ke server.
+            </p>
+            <div class="gen-box">
+              <span class="gen-value" id="gen-value"></span>
+              <button class="gen-btn" id="gen-regen" aria-label="Regenerate">
+                <i data-lucide="refresh-cw" style="width: 20px; height: 20px"></i>
+              </button>
+              <button class="gen-btn" id="gen-copy" aria-label="Copy">
+                <i data-lucide="copy" style="width: 20px; height: 20px" id="copy-icon"></i>
+              </button>
+            </div>
+            <div class="len-row" style="margin-top: 1.25rem">
+              <label class="len-label" for="gen-len">Length</label>
+              <span class="len-val" id="len-display">16</span>
+            </div>
+            <input type="range" id="gen-len" min="8" max="48" value="16" />
+            <div class="gen-toggles">
+              <button class="toggle-btn active" id="tog-upper">
+                Uppercase
+              </button>
+              <button class="toggle-btn active" id="tog-num">Numbers</button>
+              <button class="toggle-btn active" id="tog-sym">Symbols</button>
+            </div>
+            <button class="btn-generate" id="gen-btn">
+              Generate New Password
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ─── Footer ─── -->
+  <footer id="contact">
+    <div class="container">
+      <!-- Quote Card -->
+      <div class="glass quote-card">
+        <p class="quote-text">
+          <span class="neon-text-green">"</span>
+          Cybersecurity is not a product, but a process.
+          <span class="neon-text-green">"</span>
+        </p>
+        <p class="quote-author">— Bruce Schneier</p>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <!-- Logo Brand -->
+        <div class="footer-brand">
+          <i data-lucide="shield-check" class="neon-text-green" style="width: 24px; height: 24px"></i>
+          <span class="neon-text-green">CYBER</span>
+          <span class="neon-text-cyan">SHIELD</span>
+        </div>
+
+        <!-- Copyright -->
+        <p class="footer-copy" style="grid-column: span 2; text-align: center;">
+          © <span id="year"></span> CyberShield. Built for awareness.
+        </p>
+      </div>
+
+      <script src="script.js"></script>
+</body>
+
 </html>
