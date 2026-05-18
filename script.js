@@ -184,7 +184,7 @@ const TERMINAL_LINES = [
 /* ═══════════════════════════════════════════════
    HELPERS
 ═══════════════════════════════════════════════ */
-function scrollTo(id) {
+function scrolltosection(id) {
   document
     .getElementById(id)
     ?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -286,8 +286,8 @@ function reloadIcons() {
   let menuOpen = false;
 
   NAV_ITEMS.forEach((it) => {
-    desktop.innerHTML += `<li><button class="nav-btn" data-id="${it.id}" onclick="scrollTo('${it.id}')">${it.label}</button></li>`;
-    mobile.innerHTML += `<li><button class="nav-mobile-btn" data-id="${it.id}" onclick="scrollTo('${it.id}');document.getElementById('nav-mobile').classList.add('hidden');menuOpen=false;">${it.label}</button></li>`;
+    desktop.innerHTML += `<li><button class="nav-btn" data-id="${it.id}" onclick="scrolltosection('${it.id}')">${it.label}</button></li>`;
+    mobile.innerHTML += `<li><button class="nav-mobile-btn" data-id="${it.id}" onclick="scrolltosection('${it.id}');document.getElementById('nav-mobile').classList.add('hidden');menuOpen=false;">${it.label}</button></li>`;
   });
 
   toggle.addEventListener("click", () => {
@@ -714,13 +714,13 @@ function reloadIcons() {
   document
     .getElementById("explore-threats-btn")
     ?.addEventListener("click", () => {
-      scrollTo("informasi");
+      scrolltosection("informasi");
     });
 
   document
     .getElementById("check-password-btn")
     .addEventListener("click", () => {
-      scrollTo("tools");
+      scrolltosection("tools");
     });
 })();
 
