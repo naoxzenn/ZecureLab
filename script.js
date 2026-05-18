@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { id: "visualisasi", label: "Visualisasi" },
   { id: "penanganan", label: "Penanganan" },
   { id: "pencegahan", label: "Pencegahan" },
+  { id: "Literasi", label: "Literasi" },
   { id: "tools", label: "Tools" },
 ];
 
@@ -127,37 +128,37 @@ const ATTACKS = [
 const TIMELINE_STEPS = [
   {
     icon: "wifi-off",
-    title: "Disconnect Internet",
+    title: "Putus Koneksi Internet",
     desc: "Cabut jaringan untuk menghentikan eksfiltrasi data secara langsung.",
   },
   {
     icon: "key-round",
-    title: "Change Passwords",
+    title: "Ganti Kata Sandi",
     desc: "Ganti seluruh kredensial penting dari perangkat yang bersih.",
   },
   {
     icon: "shield-check",
-    title: "Enable 2FA",
+    title: "Aktifkan 2FA",
     desc: "Aktifkan multi-factor authentication di seluruh akun kritis.",
   },
   {
     icon: "scan-line",
-    title: "Run Antivirus Scan",
+    title: "Pindai Antivirus",
     desc: "Lakukan full system scan dengan engine yang up-to-date.",
   },
   {
     icon: "hard-drive",
-    title: "Backup Important Files",
+    title: "Cadangkan File Penting",
     desc: "Salin file penting ke media offline yang terisolasi.",
   },
   {
     icon: "rotate-ccw",
-    title: "Restore System",
+    title: "Pulihkan Sistem",
     desc: "Kembalikan sistem ke titik aman atau lakukan re-install bersih.",
   },
   {
     icon: "megaphone",
-    title: "Report Incident",
+    title: "Laporkan Insiden",
     desc: "Laporkan insiden ke tim IT, CSIRT, atau otoritas terkait.",
   },
 ];
