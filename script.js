@@ -28,7 +28,7 @@ const THREATS = [
     icon: "network",
     name: "DDoS",
     color: "var(--neon-cyan)",
-    desc: "Serangan trafik masif untuk membuat server overload.",
+    desc: "Serangan trafik masif untuk membuat server Kelebihan Kapasitas.",
   },
   {
     icon: "database",
@@ -206,7 +206,7 @@ const AWARENESS_ITEMS = [
     desc: "Hoaks dan misinformasi menyebar 6x lebih cepat dari fakta. Kamu punya tanggung jawab untuk tidak menjadi bagian dari rantai penyebaran.",
     tips: [
       "Verifikasi dari minimal 2 sumber terpercaya",
-      "Jangan forward sebelum cek fakta",
+      "Jangan Meneruskan sebelum cek fakta",
       "Laporkan konten hoaks yang kamu temukan",
     ],
   },
@@ -448,16 +448,16 @@ function reloadIcons() {
   function stageHTML(key, color) {
     if (key === "phishing")
       return `<div class="stage-row">
-      ${node("mail", "Fake Email", color)}${flowPipe(color)}
-      ${node("user", "Victim", "var(--neon-cyan)")}${flowPipe("var(--alert-red)", 0.3)}
-      ${node("user-x", "Hacker", "var(--alert-red)")}
+      ${node("mail", "Email Palsu", color)}${flowPipe(color)}
+      ${node("user", "Korban", "var(--neon-cyan)")}${flowPipe("var(--alert-red)", 0.3)}
+      ${node("user-x", "Peretas", "var(--alert-red)")}
     </div>`;
 
     if (key === "malware")
       return `<div class="stage-row">
-      ${node("download", "Download", "var(--neon-cyan)")}${flowPipe(color)}
+      ${node("download", "Mengunduh dan Instal", "var(--neon-cyan)")}${flowPipe(color)}
       ${node("bug", "Virus", color)}${flowPipe(color, 0.4)}
-      ${node("alert-triangle", "Corrupt OS", "var(--alert-red)")}
+      ${node("alert-triangle", "Sistem Rusak", "var(--alert-red)")}
     </div>`;
 
     if (key === "ddos") {
@@ -480,7 +480,7 @@ function reloadIcons() {
         <div class="ddos-pipe">${dots}</div>
         <div class="ddos-server">
           ${icon("server", "var(--alert-red)", 48)}
-          <div class="neon-text-red" style="font-family:var(--font-mono);font-size:0.75rem;margin-top:8px;">OVERLOADED</div>
+          <div class="neon-text-red" style="font-family:var(--font-mono);font-size:0.75rem;margin-top:8px;">Server</div>
         </div>
       </div>`;
     }
@@ -520,9 +520,9 @@ function reloadIcons() {
 
     // mitm
     return `<div class="stage-row">
-      ${node("user", "User", "var(--neon-cyan)")}${flowPipe(color)}
+      ${node("user", "Pengguna", "var(--neon-cyan)")}${flowPipe(color)}
       <div class="mitm-interceptor">
-        ${node("user-x", "Interceptor", "var(--alert-red)")}
+        ${node("user-x", "Peretas", "var(--alert-red)")}
         ${icon("lock", "var(--alert-red)", 16)}
       </div>
       ${flowPipe(color, 0.3)}
@@ -598,7 +598,7 @@ function reloadIcons() {
       <div class="timeline-icon">${icon(s.icon, "var(--neon-green)", 20)}</div>
       <div class="glass timeline-card">
         <div>
-          <span class="timeline-step neon-text-cyan">STEP_${String(i + 1).padStart(2, "0")}</span>
+          <span class="timeline-step neon-text-cyan">LANGKAH_${String(i + 1).padStart(2, "0")}</span>
           <span class="timeline-title">${s.title}</span>
         </div>
         <p class="timeline-desc">${s.desc}</p>
@@ -680,11 +680,11 @@ function reloadIcons() {
   let showPw = false;
 
   const CHECKS = [
-    { key: "length", label: "12+ characters" },
-    { key: "upper", label: "Uppercase letters" },
-    { key: "lower", label: "Lowercase letters" },
-    { key: "number", label: "Numbers" },
-    { key: "symbol", label: "Symbols" },
+    { key: "length", label: "Minimal 12 Karakter" },
+    { key: "upper", label: "Huruf Kapital(A-Z)" },
+    { key: "lower", label: "Huruf Kecil(a-z)" },
+    { key: "number", label: "Nomor" },
+    { key: "symbol", label: "Simbol" },
   ];
 
   function buildChecksList() {

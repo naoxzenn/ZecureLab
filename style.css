@@ -1497,10 +1497,15 @@ footer {
   color: var(--muted-foreground);
 }
 .footer-bottom {
-  margin-top: 2.5rem;
-  display: grid;
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  width: 100%;
 }
 @media (min-width: 640px) {
   .footer-bottom {
@@ -1532,8 +1537,9 @@ footer {
   transform: scale(1.1);
 }
 .footer-copy {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--muted-foreground);
+  text-align: center;
 }
 @media (min-width: 640px) {
   .footer-copy {
