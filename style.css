@@ -427,13 +427,23 @@ ol {
 }
 #terminal-intro .t-line {
   margin-bottom: 2px;
+  text-shadow: none !important;
+  color: #00ff9c;
 }
 
-/* Hapus semua shadow di dalam terminal intro — teks polos saja */
+#terminal-intro .t-line.neon-text-red {
+  color: #ff4d4d;
+}
+
+#terminal-intro .t-line.neon-text-cyan {
+  color: #00e5ff;
+}
+
 #terminal-intro .neon-text-green,
 #terminal-intro .neon-text-red,
-#terminal-intro .neon-text-cyan {
-  text-shadow: none;
+#terminal-intro .neon-text-cyan,
+#terminal-intro span {
+  text-shadow: none !important;
 }
 #terminal-intro.fade-out {
   opacity: 0;
