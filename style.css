@@ -427,23 +427,6 @@ ol {
 }
 #terminal-intro .t-line {
   margin-bottom: 2px;
-  text-shadow: none !important;
-  color: #00ff9c;
-}
-
-#terminal-intro .t-line.neon-text-red {
-  color: #ff4d4d;
-}
-
-#terminal-intro .t-line.neon-text-cyan {
-  color: #00e5ff;
-}
-
-#terminal-intro .neon-text-green,
-#terminal-intro .neon-text-red,
-#terminal-intro .neon-text-cyan,
-#terminal-intro span {
-  text-shadow: none !important;
 }
 #terminal-intro.fade-out {
   opacity: 0;
@@ -819,24 +802,32 @@ section {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 1.5rem;
+  padding: 0.5rem 0.75rem;
   z-index: 2;
+  overflow: hidden;
+  gap: 0;
 }
-.monitor-content .alert-icon {
-  width: 64px;
-  height: 64px;
+/* Ukuran icon mengikuti ukuran monitor secara proporsional */
+.monitor-content .alert-icon,
+.monitor-content svg.alert-icon {
+  width: clamp(24px, 5cqw, 48px);
+  height: clamp(24px, 5cqw, 48px);
+  min-width: 24px;
+  min-height: 24px;
+  flex-shrink: 0;
 }
 .monitor-content .breached {
   font-family: var(--font-display);
-  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-size: clamp(0.7rem, 3.2vw, 1.5rem);
   font-weight: 900;
-  margin-top: 1rem;
+  margin-top: 0.3rem;
+  line-height: 1.1;
 }
 .monitor-content .mono-info {
-  margin-top: 0.75rem;
+  margin-top: 0.3rem;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  line-height: 1.7;
+  font-size: clamp(0.5rem, 1.3vw, 0.72rem);
+  line-height: 1.55;
 }
 .monitor-overlay {
   position: absolute;
@@ -863,18 +854,27 @@ section {
 
 .chip {
   position: absolute;
-  padding: 8px 12px;
+  padding: 6px 10px;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   border-radius: 12px;
+  white-space: nowrap;
 }
 .chip-left {
-  left: -1.5rem;
+  left: 0;
   top: 2.5rem;
 }
 .chip-right {
-  right: -1.5rem;
+  right: 0;
   bottom: 3rem;
+}
+@media (min-width: 640px) {
+  .chip-left {
+    left: -1.5rem;
+  }
+  .chip-right {
+    right: -1.5rem;
+  }
 }
 @keyframes chipFloat1 {
   0%,
@@ -2127,23 +2127,4 @@ body {
   }
 }
 
-/* ─── Fix alert icon monitor ─── */
-.monitor-content .alert-icon,
-.monitor-content svg.alert-icon {
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  min-height: 44px;
-  flex-shrink: 0;
-}
-
-/* Di desktop tetap sedikit lebih besar */
-@media (min-width: 640px) {
-  .monitor-content .alert-icon,
-  .monitor-content svg.alert-icon {
-    width: 56px;
-    height: 56px;
-    min-width: 56px;
-    min-height: 56px;
-  }
-}
+/* alert-icon & monitor-content sudah diatur di atas — tidak perlu override lagi */
