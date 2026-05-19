@@ -485,7 +485,7 @@ nav.glass {
   background: rgba(255, 255, 255, 0.05);
   text-shadow: 0 0 10px rgba(0, 255, 156, 0.7);
 }
-/.nav-mobile {
+.nav-mobile {
   display: none;
   margin-top: 8px;
   padding: 8px;
