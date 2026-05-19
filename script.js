@@ -269,7 +269,9 @@ function icon(name, color, size = 20) {
   return `<i data-lucide="${name}" style="width:${size}px;height:${size}px;${color ? "color:" + color + ";" : ""}"></i>`;
 }
 function reloadIcons() {
-  lucide.createIcons();
+  if (typeof lucide !== "undefined") {
+    lucide.createIcons();
+  }
 }
 
 /* ═══════════════════════════════════════════════
@@ -356,14 +358,15 @@ function reloadIcons() {
 ═══════════════════════════════════════════════ */
 (function buildNav() {
   const desktop = document.getElementById("nav-desktop");
-  const mobile = document.getElementById("nav-mobile");
-  const toggle = document.getElementById("nav-toggle");
-  const navIcon = document.getElementById("nav-icon");
+  const mobile  = document.getElementById("nav-mobile");
+  const toggle  = document.getElementById("nav-toggle");
+  const navIconSvg = document.getElementById("nav-icon-svg");
   let menuOpen = false;
 
-  /* ── Build nav items ── */
+  const SVG_MENU = `<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>`;
+  const SVG_X    = `<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>`;
+
   NAV_ITEMS.forEach((it) => {
-    // Desktop
     const liD = document.createElement("li");
     const btnD = document.createElement("button");
     btnD.className = "nav-btn";
@@ -373,7 +376,6 @@ function reloadIcons() {
     liD.appendChild(btnD);
     desktop.appendChild(liD);
 
-    // Mobile
     const liM = document.createElement("li");
     const btnM = document.createElement("button");
     btnM.className = "nav-mobile-btn";
@@ -381,57 +383,54 @@ function reloadIcons() {
     btnM.textContent = it.label;
     btnM.addEventListener("click", () => {
       scrolltosection(it.id);
-      closeMenu(); // tutup setelah dipencet
+      closeMenu();
     });
     liM.appendChild(btnM);
     mobile.appendChild(liM);
   });
 
-  /* ── Open / Close helpers ── */
   function openMenu() {
     menuOpen = true;
     mobile.classList.add("open");
     toggle.classList.add("open");
-    navIcon.setAttribute("data-lucide", "x");
-    reloadIcons();
+    if (navIconSvg) navIconSvg.innerHTML = SVG_X;
   }
 
   function closeMenu() {
     menuOpen = false;
     mobile.classList.remove("open");
     toggle.classList.remove("open");
-    navIcon.setAttribute("data-lucide", "menu");
-    reloadIcons();
+    if (navIconSvg) navIconSvg.innerHTML = SVG_MENU;
   }
 
-  /* ── Hamburger toggle ── */
   toggle.addEventListener("click", (e) => {
-    e.stopPropagation(); // jangan bubble ke document
+    e.stopPropagation();
     menuOpen ? closeMenu() : openMenu();
   });
 
-  /* ── Klik di luar → tutup ── */
   document.addEventListener("click", (e) => {
     if (menuOpen && !mobile.contains(e.target) && !toggle.contains(e.target)) {
       closeMenu();
     }
   });
 
-  /* ── Scroll spy ── */
-  window.addEventListener(
-    "scroll",
-    () => {
-      let curr = "home";
-      NAV_ITEMS.forEach((it) => {
-        const el = document.getElementById(it.id);
-        if (el && el.getBoundingClientRect().top <= 120) curr = it.id;
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        let curr = "home";
+        NAV_ITEMS.forEach((it) => {
+          const el = document.getElementById(it.id);
+          if (el && el.getBoundingClientRect().top <= 120) curr = it.id;
+        });
+        document.querySelectorAll("[data-id]").forEach((btn) => {
+          btn.classList.toggle("active", btn.dataset.id === curr);
+        });
+        ticking = false;
       });
-      document.querySelectorAll("[data-id]").forEach((btn) => {
-        btn.classList.toggle("active", btn.dataset.id === curr);
-      });
-    },
-    { passive: true },
-  );
+      ticking = true;
+    }
+  }, { passive: true });
 })();
 
 /* ═══════════════════════════════════════════════
@@ -781,13 +780,13 @@ function reloadIcons() {
     reloadIcons();
   });
 
+  const EYE_OPEN = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+  const EYE_OFF  = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
+
   toggle.addEventListener("click", () => {
     showPw = !showPw;
     input.type = showPw ? "text" : "password";
-    toggle.innerHTML = showPw
-      ? `<i data-lucide="eye-off" style="width:20px;height:20px;"></i>`
-      : `<i data-lucide="eye" style="width:20px;height:20px;"></i>`;
-    reloadIcons();
+    toggle.innerHTML = showPw ? EYE_OFF : EYE_OPEN;
   });
 
   // Generator
@@ -860,17 +859,14 @@ function reloadIcons() {
   document.getElementById("gen-regen").addEventListener("click", regen);
   document.getElementById("gen-btn").addEventListener("click", regen);
 
+  const COPY_SVG  = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>`;
+  const CHECK_SVG = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00ff9c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+
   document.getElementById("gen-copy").addEventListener("click", async () => {
-    await navigator.clipboard.writeText(
-      document.getElementById("gen-value").textContent,
-    );
+    await navigator.clipboard.writeText(document.getElementById("gen-value").textContent);
     const btn = document.getElementById("gen-copy");
-    btn.innerHTML = `<i data-lucide="check" class="neon-text-green" style="width:20px;height:20px;"></i>`;
-    reloadIcons();
-    setTimeout(() => {
-      btn.innerHTML = `<i data-lucide="copy" style="width:20px;height:20px;"></i>`;
-      reloadIcons();
-    }, 1500);
+    btn.innerHTML = CHECK_SVG;
+    setTimeout(() => { btn.innerHTML = COPY_SVG; }, 1500);
   });
 
   document
@@ -910,8 +906,11 @@ document
 /* ═══════════════════════════════════════════════
    INIT ICONS
 ═══════════════════════════════════════════════ */
-lucide.createIcons();
-
-window.addEventListener("load", () => {
-  lucide.createIcons();
-});
+function initLucide() {
+  if (typeof lucide !== "undefined") {
+    lucide.createIcons();
+  }
+}
+initLucide();
+document.querySelector('script[src*="lucide"]')?.addEventListener("load", initLucide);
+window.addEventListener("load", initLucide);
