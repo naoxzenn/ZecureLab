@@ -1,4 +1,6 @@
-/* === Definisi Data Statis Antarmuka === */
+/* ═══════════════════════════════════════════════
+   DATA
+═══════════════════════════════════════════════ */
 const NAV_ITEMS = [
   { id: "home", label: "Home" },
   { id: "informasi", label: "Informasi" },
@@ -174,7 +176,7 @@ const PREVENTION_TIPS = [
 const AWARENESS_ITEMS = [
   {
     icon: "brain",
-    title: "Berpikir Before Posting",
+    title: "Berpikir Sebelum Posting",
     color: "var(--neon-green)",
     tag: "THINK FIRST",
     desc: "Konten yang kamu unggah bisa bertahan selamanya di internet. Tanyakan pada diri sendiri: apakah ini bisa merugikanmu 5 tahun ke depan?",
@@ -255,7 +257,9 @@ const TERMINAL_LINES = [
   "$ launching ZecureLab...",
 ];
 
-/* === Fungsi Helper / Utilitas === */
+/* ═══════════════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════════════ */
 function scrolltosection(id) {
   document
     .getElementById(id)
@@ -270,7 +274,9 @@ function reloadIcons() {
   }
 }
 
-/* === Fungsi Generator Efek Efek Partikel Latar Belakang === */
+/* ═══════════════════════════════════════════════
+   PARTICLES
+═══════════════════════════════════════════════ */
 (function buildParticles() {
   const container = document.getElementById("particles");
   const colors = [
@@ -291,7 +297,9 @@ function reloadIcons() {
   }
 })();
 
-/* === Logika Simulasi Pengetikan Terminal Intro === */
+/* ═══════════════════════════════════════════════
+   TERMINAL INTRO
+═══════════════════════════════════════════════ */
 (function terminalIntro() {
   const container = document.getElementById("terminal-lines");
   const intro = document.getElementById("terminal-intro");
@@ -345,7 +353,9 @@ function reloadIcons() {
   tick();
 })();
 
-/* === Logika Pembuat & Pengendali Navigasi Menu (Navbar) === */
+/* ═══════════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════════ */
 (function buildNav() {
   const desktop = document.getElementById("nav-desktop");
   const mobile = document.getElementById("nav-mobile");
@@ -427,7 +437,9 @@ function reloadIcons() {
   );
 })();
 
-/* === Logika Perender Konten Ancaman (Threats Grid) === */
+/* ═══════════════════════════════════════════════
+   THREATS GRID
+═══════════════════════════════════════════════ */
 (function buildThreats() {
   const grid = document.getElementById("threats-grid");
 
@@ -459,7 +471,9 @@ function reloadIcons() {
   reloadIcons();
 })();
 
-/* === Logika Engine Visualizer Animasi Serangan Jaringan === */
+/* ═══════════════════════════════════════════════
+   ATTACK VISUALIZER
+═══════════════════════════════════════════════ */
 (function buildAttackVisualizer() {
   const btnContainer = document.getElementById("attack-buttons");
   let activeKey = "phishing";
@@ -551,6 +565,7 @@ function reloadIcons() {
       </div>`;
     }
 
+    // mitm
     return `<div class="stage-row">
       ${node("user", "Pengguna", "var(--neon-cyan)")}${flowPipe(color)}
       <div class="mitm-interceptor">
@@ -565,6 +580,7 @@ function reloadIcons() {
     activeKey = key;
     const att = ATTACKS.find((a) => a.key === key);
 
+    // Update buttons
     document.querySelectorAll(".attack-btn").forEach((b) => {
       const isActive = b.dataset.key === key;
       b.classList.toggle("active", isActive);
@@ -595,6 +611,7 @@ function reloadIcons() {
     reloadIcons();
   }
 
+  // Build buttons
   ATTACKS.forEach((a) => {
     const btn = document.createElement("button");
     btn.className = "attack-btn";
@@ -614,7 +631,9 @@ function reloadIcons() {
   renderAttack("phishing");
 })();
 
-/* === Logika Perender Komponen Komponen Langkah Mitigasi (Timeline) === */
+/* ═══════════════════════════════════════════════
+   TIMELINE
+═══════════════════════════════════════════════ */
 (function buildTimeline() {
   const container = document.getElementById("timeline-items");
   TIMELINE_STEPS.forEach((s, i) => {
@@ -635,7 +654,9 @@ function reloadIcons() {
   reloadIcons();
 })();
 
-/* === Logika Perender Tips Pencegahan (Prevention Grid) === */
+/* ═══════════════════════════════════════════════
+   PREVENTION GRID
+═══════════════════════════════════════════════ */
 (function buildPrevention() {
   const grid = document.getElementById("prevention-grid");
   PREVENTION_TIPS.forEach((t, i) => {
@@ -650,7 +671,9 @@ function reloadIcons() {
   reloadIcons();
 })();
 
-/* === Logika Perender Konten Edukasi Kesadaran Digital === */
+/* ═══════════════════════════════════════════════
+   DIGITAL AWARENESS GRID
+═══════════════════════════════════════════════ */
 (function buildAwareness() {
   const grid = document.getElementById("awareness-grid");
   if (!grid) return;
@@ -690,8 +713,11 @@ function reloadIcons() {
   reloadIcons();
 })();
 
-/* === Logika Modul Toolkit Kredensial & Password (Checker & Generator) === */
+/* ═══════════════════════════════════════════════
+   PASSWORD TOOLS
+═══════════════════════════════════════════════ */
 (function buildTools() {
+  // Strength Checker
   const input = document.getElementById("pw-input");
   const toggle = document.getElementById("pw-toggle");
   const strengthLabel = document.getElementById("strength-label");
@@ -766,6 +792,7 @@ function reloadIcons() {
     toggle.innerHTML = showPw ? EYE_OFF : EYE_OPEN;
   });
 
+  // Generator
   let genLen = 16,
     useUpper = true,
     useNum = true,
@@ -862,10 +889,14 @@ function reloadIcons() {
     });
 })();
 
-/* === Sinkronisasi Tahun Hak Cipta di Footer === */
+/* ═══════════════════════════════════════════════
+   FOOTER YEAR
+═══════════════════════════════════════════════ */
 document.getElementById("year").textContent = new Date().getFullYear();
 
-/* === Pengendali Efek Transisi Animasi Timbul (Intersection Observer) === */
+/* ═══════════════════════════════════════════════
+   SCROLL ANIMATIONS (IntersectionObserver)
+═══════════════════════════════════════════════ */
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((e) => {
@@ -879,7 +910,9 @@ document
   .querySelectorAll(".animate-on-scroll,.animate-left")
   .forEach((el) => observer.observe(el));
 
-/* === Manajemen Muat Awal & Inisialisasi Paket Ikon Lucide === */
+/* ═══════════════════════════════════════════════
+   INIT ICONS
+═══════════════════════════════════════════════ */
 function initLucide() {
   if (typeof lucide !== "undefined") {
     lucide.createIcons();
