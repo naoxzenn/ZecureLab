@@ -252,7 +252,7 @@ const TERMINAL_LINES = [
   "$ scanning suspicious activities...",
   "$ detecting unauthorized access...",
   "$ ALERT: intrusion detected",
-  "$ launching CyberShield...",
+  "$ launching ZecureLab...",
 ];
 
 /* === Fungsi Helper / Utilitas === */
